@@ -1,0 +1,11 @@
+{
+    "host" : "adamrobins.com",
+    "port" : 5000,
+    "port_ws" : 5001,
+    "title" : "News | adamrobins.com",
+    "database" : {
+        "host" : "localhost",
+        "port" : 27017,
+        "collection" : "aggregatorCollection"
+    }
+}

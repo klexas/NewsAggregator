@@ -1,0 +1,38 @@
+.link-list {
+  background-color: rgba(0, 0, 0, .5);
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+.link-list a {
+  color: rgb(37, 166, 184);
+ }
+
+
+.link-list span {
+  padding: 0px 5px 0px 0px;
+  margin: 0px 15px 0px 0px;
+}
+
+.list-group-flush {
+  line-height: 14px;
+}
+
+.vote_section {
+  display:block;
+  float:right;
+  clear:both;
+  padding: 10px;
+}
+
+.vote_section a {
+  color: #ccc;
+  font-size: 10pt;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 10px 0px 0px;
+}
+.vote_section a:hover {
+  color: #fff;
+  cursor: pointer;
+
+}
+

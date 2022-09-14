@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="col-md-12">
+      <ul class="list-group list-group-flush" *ngFor="let link of linkList">
+        <li class="list-group-item link-list">
+          <div class="vote_section" *ngIf=!link.hasVoted>
+            <a (click)="voteUp(link)"><fa-icon [icon]="faThumbsUp"></fa-icon></a>
+            <!-- Not sure we need a downvote ? HN partiy~ -->
+            <!-- <a (click)="voteDown(link)"><fa-icon [icon]="faThumbsDown"></fa-icon></a> -->
+          </div>
+          <a href="{{link.url}}" target="_blank">{{link.title}}
+            <span class="micro">({{link.url_formatted}})</span></a>
+            <br />
+          <span class="micro">{{link.votes}} Votes - by {{link.author}} - {{link.date}} </span>
+          <a routerLink="link/{{link.id}}"><span class="micro">Discuss</span></a>
+          <span class="micro"><a routerLink="link/{{link.id}}">{{link.comment_count}} Comments</a></span>
+        </li>
+      </ul>
+    </div>
+  </div>

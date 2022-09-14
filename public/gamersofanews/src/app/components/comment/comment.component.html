@@ -1,0 +1,27 @@
+<form (ngSubmit)="submitComment()">
+  <div class="form-group">
+    <label for="comment_input">Comment</label>
+    <textarea
+      type="text"
+      class="form-control"
+      id="comment_input"
+      name="comment_input"
+      placeholder="Comment"
+      [(ngModel)]="comment_input"
+    ></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+  <div class="comment_section">
+    <h6>{{comments.length}} Comments</h6>
+    <div class="comment" *ngFor="let comment of comments">
+      <div class="comment_header">
+        <span class="comment_author">{{ comment.author }}</span>
+        <span class="comment_date">{{ comment.date }}</span>
+      </div>
+      <div class="comment_body">
+        <pre>{{ comment.body }}</pre>
+      </div>
+    </div>
+  </div>

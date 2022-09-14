@@ -1,0 +1,13 @@
+body {
+  background : rgb(24, 22, 26)!important;
+  background-color : rgb(24, 22, 26)!important;
+  color: #ccc;
+}
+pre {
+  color: #ccc;
+}
+span.micro {
+  font-size: 8pt;
+  color: #ccc;
+  font-style: italic;
+}

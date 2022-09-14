@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="col-md-10 offset-md-1">
+    <div class="main_area">
+      <div class="vote_section" *ngIf="!hasVoted">
+        <a (click)="voteUp()"><fa-icon [icon]="faThumbsUp"></fa-icon></a>
+        <!-- <a (click)="voteDown(link)"><fa-icon [icon]="faThumbsDown"></fa-icon></a> -->
+      </div>
+      <div class="title_section">
+        <a href="{{ link.url }}" target="_blank">{{ link.title }}
+          <span class="micro">({{ link.url_formatted }})</span>
+        </a>
+        <br />
+        <span class="micro">{{ link.votes }} Votes - by {{ link.author }} - {{ link.date }}</span>
+      </div>
+
+      <hr />
+
+      <app-comment [comments]="comments" [id]="id"></app-comment>
+
+    </div>
+  </div>
+</div>
