@@ -8,7 +8,7 @@ import { SubmitComponent } from './components/submit/submit.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'submit', component: SubmitComponent },
-  { path: 'link/:id', component: LinkComponent, pathMatch: 'full' },
+  { path: 'link/:id', component: LinkComponent },
   { path: 'link', component: LinkComponent },
   { path: '', component: HomeComponent }
 ];

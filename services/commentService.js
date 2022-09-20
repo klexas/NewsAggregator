@@ -1,10 +1,8 @@
 var mongoose = require("mongoose");
-var config = require("../config");
+var mongo = require("./mongo");
 var Comment = require("../models/commentSchema");
 
-mongoose.connect(
-  "mongodb://" + config.database.host + "/" + config.database.collection + ""
-);
+mongoose.connect(mongo.ConnectionString());
 
 var commentService = {
   getComments: async (link_id) => {
@@ -31,7 +29,7 @@ var commentService = {
         callback(err, null);
       } else {
         callback(null, comment);
-        console.log('Comment made on : ' + comment.link_id);
+        console.log("Comment made on : " + comment.link_id);
       }
     });
   },
