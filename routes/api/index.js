@@ -2,6 +2,8 @@ var express = require("express");
 const commentService = require("../../services/commentService");
 var router = express.Router();
 var linkService = require("../../services/linkService");
+const userService = require("../../services/userService");
+const { isLoggedIn}  = require("../../middleware/auth");
 
 // TODO: Split into individual route files for cleaner layout
 
@@ -16,7 +18,7 @@ router.get("/comments", function (req, res) {
   });
 });
 
-router.post("/comment/:link", function (req, res) {
+router.post("/comment/:link", isLoggedIn, function (req, res) {
   console.log("Comment posted : " + req.params.link);
   req.body.link_id = req.params.link;
   commentService.addComment(req.body, function (err, comment) {
@@ -83,5 +85,31 @@ router.post("/link/:id/vote", async function (req, res) {
     id: req.params.id,
   });
 });
+
+// signup route
+router.post("/signup", function (req, res) {
+  userService.register(req.body, function (err, user) {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(user);
+    }
+  });
+});
+
+// login route
+router.post("/login", function (req, res) {
+  userService.login(req.body, function (err, user) {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(user);
+    }
+  });
+});
+
+
+
+
 
 module.exports = router;
