@@ -1,8 +1,4 @@
-var mongoose = require("mongoose");
-var mongo = require("./mongo");
 var Comment = require("../models/commentSchema");
-
-mongoose.connect(mongo.ConnectionString());
 
 var commentService = {
   getComments: async (link_id) => {

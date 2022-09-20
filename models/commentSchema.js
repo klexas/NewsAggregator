@@ -1,5 +1,6 @@
- mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var mongo = require("../services/mongo");
+
+var Schema = mongo.Schema;
 // Comment Mongoose SChema
 var CommentSchema = new Schema({
     link_id: String,
@@ -14,5 +15,5 @@ var CommentSchema = new Schema({
 
 
 module.exports = {
-    Comment: mongoose.model('Comment', CommentSchema)
+    Comment: mongo.model('Comment', CommentSchema)
 }

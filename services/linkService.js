@@ -1,9 +1,5 @@
-var mongoose = require("mongoose");
-var mongo = require("./mongo");
 var Link = require("../models/linkSchema");
 var Comment = require("../models/commentSchema");
-
-mongoose.connect(mongo.ConnectionString());
 
 var linkService = {
   getLinks: async (callback, index = 0) => {
