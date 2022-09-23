@@ -12,8 +12,6 @@ const register = async (req, callback) => {
     try {
         const { username, email, password } = req;
         const pw = await bcrypt.hash(password, 12);
-        console.log(pw);
-        console.log(pw2);
         const user = await User.create({ username: username, email: email, password: pw });
         const token = createJWT(user);
         log.magenta("REGISTER", 'User Created Successfully' + username);

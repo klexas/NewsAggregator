@@ -8,6 +8,7 @@ const isLoggedIn = async (req, res, next) => {
       if (token) {
         const payload = await jwt.verify(token, process.env.SECRET);
         if (payload) {
+           // request store for the downstream
           req.user = payload;
           next();
         } else {
