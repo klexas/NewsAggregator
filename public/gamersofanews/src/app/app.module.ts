@@ -12,6 +12,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommentComponent } from './components/comment/comment.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { RegisterComponent } from './components/user/register/register.component';
+import { UserHeaderComponent } from './components/header/user-header/user-header.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { CommentComponent } from './components/comment/comment.component';
     SubmitComponent,
     LinkComponent,
     HeaderComponent,
-    CommentComponent
+    CommentComponent,
+    LoginComponent,
+    RegisterComponent,
+    UserHeaderComponent
   ],
   imports: [
     BrowserModule,

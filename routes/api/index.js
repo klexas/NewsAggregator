@@ -2,6 +2,9 @@ var express = require("express");
 const commentService = require("../../services/commentService");
 var router = express.Router();
 var linkService = require("../../services/linkService");
+const userService = require("../../services/userService");
+const { isLoggedIn } = require("../../middleware/auth");
+const { log } = require("mercedlogger");
 
 // TODO: Split into individual route files for cleaner layout
 
@@ -16,9 +19,13 @@ router.get("/comments", function (req, res) {
   });
 });
 
-router.post("/comment/:link", function (req, res) {
-  console.log("Comment posted : " + req.params.link);
+router.post("/comment/:link", isLoggedIn, function (req, res) {
   req.body.link_id = req.params.link;
+
+  const { user } = req.user; // get username from req.user property created by isLoggedIn middleware
+  log.magenta("Posting user : ", user.username);
+
+  req.body.author = user.username;
   commentService.addComment(req.body, function (err, comment) {
     if (err) {
       res.status(500).send(err);
@@ -65,7 +72,7 @@ router.get("/:id", async function (req, res) {
   });
 });
 
-router.post("/submit", function (req, res) {
+router.post("/submit", isLoggedIn, function (req, res) {
   linkService.addLink(req.body, function (err, link) {
     if (err) {
       console.log(err);
@@ -77,10 +84,32 @@ router.post("/submit", function (req, res) {
   });
 });
 
-router.post("/link/:id/vote", async function (req, res) {
+router.post("/link/:id/vote", isLoggedIn, async function (req, res) {
   await linkService.vote(req.params.id, req.body.vote);
   res.send({
     id: req.params.id,
+  });
+});
+
+// signup route
+router.post("/register", function (req, res) {
+  userService.register(req.body, function (err, user) {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(user);
+    }
+  });
+});
+
+// login route
+router.post("/login", function (req, res) {
+  userService.login(req.body, function (err, user) {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(user);
+    }
   });
 });
 
