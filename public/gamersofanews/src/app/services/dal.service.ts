@@ -1,15 +1,21 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DalService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   public async get<T>(url: string): Promise<T> {
     return new Promise((resolve, reject) => {
-      let data = this.http.get(url);
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.authService.getToken()}`
+      });
+
+      let data = this.http.get(url, { headers });
 
       data.subscribe((response: any) => {
         resolve(response);
@@ -20,7 +26,13 @@ export class DalService {
 
   public async post<T>(url: string, body: any): Promise<T> {
     return new Promise((resolve, reject) => {
-      let data = this.http.post(url, body);
+      //  Get the bearer token
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.authService.getToken()}`
+      })
+
+      let data = this.http.post(url, body, { headers });
 
       data.subscribe((response: any) => {
         resolve(response);

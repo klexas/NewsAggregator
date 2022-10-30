@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row ">
+    <div class="col-md-6 offset-md-3 login-form">
+      <h6>Login</h6>
+      <hr/>
+      <form (ngSubmit)="userLogin()">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="iam@example.com"
+            [(ngModel)]="email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="password"
+            [(ngModel)]="password"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+      <a class="nav-link" routerLink="/register">Register <span class="sr-only">(current)</span></a>
+    </div>
+  </div>
+</div>

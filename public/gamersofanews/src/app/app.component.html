@@ -1,2 +1,5 @@
-<app-header></app-header>
+<div *ngIf="isLoggedIn; else loggedInBlock"><app-user-header></app-user-header></div>
+<ng-template #loggedInBlock><app-header></app-header></ng-template>
+
+
 <router-outlet class="navbar-dark"></router-outlet>

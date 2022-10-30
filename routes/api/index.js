@@ -92,7 +92,7 @@ router.post("/link/:id/vote", isLoggedIn, async function (req, res) {
 });
 
 // signup route
-router.post("/signup", function (req, res) {
+router.post("/register", function (req, res) {
   userService.register(req.body, function (err, user) {
     if (err) {
       res.status(500).send(err);

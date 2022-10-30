@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row ">
+    <div class="col-md-6 offset-md-3 register-form">
+      <h6>Register</h6>
+      <hr/>
+      <pre>{{errorMessage}}</pre>
+      <form (ngSubmit)="register()">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="iam@example.com"
+            [(ngModel)]="email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            [(ngModel)]="username"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="password"
+            [(ngModel)]="password"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Confirm Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="passwordConfirm"
+            name="passwordConfirm"
+            placeholder="password"
+            [(ngModel)]="passwordConfirm"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+      <a class="nav-link" routerLink="/login">Login <span class="sr-only">(current)</span></a>
+    </div>
+  </div>
+</div>
