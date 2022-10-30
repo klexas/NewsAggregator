@@ -7,16 +7,20 @@ import * as config from '../../../config.json';
   styleUrls: ['./user-header.component.css']
 })
 export class UserHeaderComponent implements OnInit {
-  title: string;
+  title: string = config.default.site.name;
   isCollapsed = false;
-  userName: string;
-  // TODO: Clean up needed
-  // @Input() title: string = '';
+  userName: string | null;
+
   constructor() {
     this.title = config.default.site.name;
-    this.userName = "Admin";
+    this.userName = sessionStorage.getItem('username');
   }
 
   ngOnInit(): void {
+  }
+
+  logout(): void {
+    sessionStorage.clear();
+    window.location.href="";
   }
 }

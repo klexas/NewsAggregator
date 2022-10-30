@@ -28,7 +28,7 @@ const login = async (req, callback) => {
         const user = await User.findOne({ email });
         if (await bcrypt.compare(password, user.password)) {
             const token = createJWT(user);
-            callback(null, { token });
+            callback(null, { token: token, username: user.username });
         } else {
             callback({error: "Invalid Credentials"});
         }

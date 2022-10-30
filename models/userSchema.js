@@ -14,7 +14,6 @@ const UserSchema = new Schema({
     comment_count: Number,
     enabled: {
         type: Boolean,
-        unique: true,
         default: true
     },
 });
