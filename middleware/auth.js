@@ -24,6 +24,16 @@ const isLoggedIn = async (req, res, next) => {
   }
 };
 
+const getUser = async (req) => {
+  const token = req.headers.authorization.split(" ")[1];
+    if (!token) res.status(400).json({ error: "malformed auth header" });
+
+    const payload = await jwt.verify(token, process.env.SECRET);
+    logger.log.magenta("Payload", payload);
+    return payload;
+};
+
 module.exports = {
   isLoggedIn,
+  getUser
 };

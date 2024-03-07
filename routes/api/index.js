@@ -3,7 +3,7 @@ const commentService = require("../../services/commentService");
 var router = express.Router();
 var linkService = require("../../services/linkService");
 const userService = require("../../services/userService");
-const { isLoggedIn } = require("../../middleware/auth");
+const { isLoggedIn, getUser } = require("../../middleware/auth");
 const { log } = require("mercedlogger");
 
 // TODO: Split into individual route files for cleaner layout
@@ -72,13 +72,13 @@ router.get("/:id", async function (req, res) {
   });
 });
 
-router.post("/submit", isLoggedIn, function (req, res) {
-  log.magenta("Posting user : ", req.user.username);
-  log.magenta("Posting user : ", req.user);
-  // Log headers
-  log.magenta("Headers", req.headers);
+router.post("/submit", isLoggedIn, async function (req, res) {
+  // TODO: DTOs
+  const link = req.body;
+  const userInfo = await getUser(req);
+  link.author = userInfo.user.username;
   
-  linkService.addLink(req.body, function (err, link) {
+  linkService.addLink(link, function (err, link) {
     if (err) {
       console.log(err);
       res.status(500).send(err);

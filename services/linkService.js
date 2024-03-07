@@ -30,7 +30,7 @@ var linkService = {
     newLink.meta = {
       votes: 0,
       favs: 0,
-      aggregate_rating: 0,
+      aggregate_rating: 0
     };
     newLink.save(function (err, link) {
       if (err) {
