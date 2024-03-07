@@ -3,9 +3,11 @@
   "version": "0.0.1",
   "description": "new listings for gamersofa.com in the style of new.ycombinator.com",
   "main": "main.js",
-  
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon main.js",
+    "client": "cd public/gamersofanews && ng serve",
+    "dev": "concurrently --kill-others \"npm run server\" \"npm run client\""
   },
   "author": "iam@adamrobins.com",
   "license": "MIT",
@@ -20,5 +22,8 @@
     "mongoose": "^6.6.0",
     "morgan": "^1.10.0",
     "socket.io": "^4.5.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }

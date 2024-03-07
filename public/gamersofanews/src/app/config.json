@@ -1,7 +1,7 @@
 {
   "site": {
     "name": "SiteName",
-    "api_base_url": "http://localhost:5000/api/",
+    "api_base_url": "http://localhost:5000/api",
     "description": "SiteDescription",
     "author": "Adam Robins",
     "email": "iam@adamrobins.com"

@@ -73,6 +73,11 @@ router.get("/:id", async function (req, res) {
 });
 
 router.post("/submit", isLoggedIn, function (req, res) {
+  log.magenta("Posting user : ", req.user.username);
+  log.magenta("Posting user : ", req.user);
+  // Log headers
+  log.magenta("Headers", req.headers);
+  
   linkService.addLink(req.body, function (err, link) {
     if (err) {
       console.log(err);

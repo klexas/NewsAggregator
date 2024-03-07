@@ -22,7 +22,12 @@ app.use(bodyParser.json());
 app.use('/api', router);
 
 io.on('connection', (socket) => {
-  log.magenta('a user connected');
+  log.magenta('A user connected');
+  // TODO: Add user to mongo connection list
+  socket.on('disconnect', () => {
+    log.magenta('user disconnected');
+  });
+
 });
 
 // websocket

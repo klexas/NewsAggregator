@@ -10,7 +10,7 @@ const homeLinksUrl: string = config.default.site.api_base_url;
   providedIn: 'root',
 })
 export class AuthService {
-  readonly bearerKey: string = 'bearerToken';
+  readonly bearerKey: string = 'bearer_token_key';
   readonly userKey: string = 'username';
 
   constructor(private http: HttpClient) {}

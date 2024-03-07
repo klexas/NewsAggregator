@@ -5,8 +5,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { log } = require("mercedlogger");
 
-
-const { SECRET = "" } = process.env;
+//const { SECRET = "" } = process.env;
+const { SECRET = "SECRET_KEY" } = "SECRET_KEY";
 
 const register = async (req, callback) => {
     try {

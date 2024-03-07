@@ -10,8 +10,8 @@ var LinkSchema = new Schema({
     slug: String,
     description: String,
     date: { type: Date, default: Date.now },
-    comment_count: Number,
-    hidden: Boolean,
+    comment_count: { type:Number, default: 0 },
+    hidden: { type:Boolean, default: false },
     meta: {type: Object, default: {
         votes: 0,
         favs: 0,

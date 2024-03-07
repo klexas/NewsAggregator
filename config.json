@@ -1,13 +1,13 @@
 {
-    "host" : "adamrobins.com",
+    "host" : "127.0.0.1",
     "port" : 5000,
     "port_ws" : 5001,
-    "title" : "News | adamrobins.com",
+    "title" : "News | localhost",
     "database" : {
-        "host" : "localhost",
+        "host" : "127.0.0.1",
         "port" : 27017,
         "collection" : "aggregatorCollection",
-        "username" : "user",
-        "password" : "pass"
+        "username" : "",
+        "password" : ""
     }
 }

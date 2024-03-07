@@ -34,6 +34,7 @@ var linkService = {
     };
     newLink.save(function (err, link) {
       if (err) {
+        console.log(err.message);
         callback(err, null);
       } else {
         callback(null, link);

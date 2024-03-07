@@ -1,8 +1,13 @@
 require("dotenv").config(); // loading env variables
 const jwt = require("jsonwebtoken");
+const logger = require("mercedlogger");
 
 const isLoggedIn = async (req, res, next) => {
   try {
+    logger.log.magenta("Checking for token");
+    console.log(req.headers);
+    logger.log.magenta("Auth Header", req.headers);
+
     if (!req.headers.authorization)
       res.status(400).json({ error: "No authorization header" });
 
